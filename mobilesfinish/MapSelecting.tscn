@@ -1,0 +1,67 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://maps/Level2.png" type="Texture" id=1]
+[ext_resource path="res://maps/Level3.png" type="Texture" id=2]
+[ext_resource path="res://FirstApp/TitleScreen.png" type="Texture" id=3]
+[ext_resource path="res://maps/Level1.png" type="Texture" id=4]
+[ext_resource path="res://maps/back.png" type="Texture" id=5]
+[ext_resource path="res://MapSelecting.gd" type="Script" id=6]
+[ext_resource path="res://maps/inactivLevel2.png" type="Texture" id=7]
+[ext_resource path="res://maps/inactivlevel3.png" type="Texture" id=8]
+
+[node name="MapSelecting" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.694118, 0.564706, 0.764706, 0.866667 )
+position = Vector2( 508.148, 296.386 )
+scale = Vector2( 0.404865, 0.386562 )
+texture = ExtResource( 3 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 165.3
+margin_top = 231.895
+margin_right = 261.3
+margin_bottom = 331.895
+texture_normal = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="map2" type="TextureButton" parent="."]
+margin_left = 454.423
+margin_top = 231.895
+margin_right = 550.423
+margin_bottom = 331.895
+disabled = true
+texture_normal = ExtResource( 1 )
+texture_disabled = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="map3" type="TextureButton" parent="."]
+margin_left = 734.93
+margin_top = 231.895
+margin_right = 830.93
+margin_bottom = 331.895
+disabled = true
+texture_normal = ExtResource( 2 )
+texture_disabled = ExtResource( 8 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+margin_left = 689.005
+margin_top = 481.005
+margin_right = 989.005
+margin_bottom = 581.005
+texture_normal = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="map2" to="." method="_on_map2_pressed"]
+[connection signal="pressed" from="map3" to="." method="_on_map3_pressed"]
+[connection signal="pressed" from="TextureButton4" to="." method="_on_TextureButton4_pressed"]

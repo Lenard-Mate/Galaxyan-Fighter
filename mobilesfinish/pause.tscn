@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://FirstApp/WhiteResume.png" type="Texture" id=1]
+[ext_resource path="res://FirstApp/whiteScreen.png" type="Texture" id=2]
+[ext_resource path="res://FirstApp/resume.png" type="Texture" id=3]
+[ext_resource path="res://FirstApp/pause.png" type="Texture" id=4]
+[ext_resource path="res://FirstApp/whiteExitcolorate.png" type="Texture" id=5]
+[ext_resource path="res://FirstApp/Exitcolorate.png" type="Texture" id=6]
+[ext_resource path="res://pause.gd" type="Script" id=7]
+
+[node name="Pause" type="Node2D"]
+pause_mode = 2
+script = ExtResource( 7 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.411765 )
+position = Vector2( 527.412, 296.669 )
+scale = Vector2( 1.12116, 0.681058 )
+texture = ExtResource( 2 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 416.772
+margin_top = 30.515
+margin_right = 616.772
+margin_bottom = 130.515
+texture = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 189.505
+margin_top = 183.848
+margin_right = 389.505
+margin_bottom = 283.848
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 668.923
+margin_top = 186.676
+margin_right = 868.923
+margin_bottom = 286.676
+texture_normal = ExtResource( 6 )
+texture_focused = ExtResource( 5 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]

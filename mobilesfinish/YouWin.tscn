@@ -1,0 +1,46 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://FirstApp/whiteScreen.png" type="Texture" id=1]
+[ext_resource path="res://FirstApp/WinTitleScreen.png" type="Texture" id=2]
+[ext_resource path="res://FirstApp/Exit.png" type="Texture" id=3]
+[ext_resource path="res://FirstApp/Exit2.png" type="Texture" id=4]
+[ext_resource path="res://FirstApp/Continue.png" type="Texture" id=5]
+[ext_resource path="res://YouWin.gd" type="Script" id=6]
+[ext_resource path="res://FirstApp/continueWhite.png" type="Texture" id=7]
+
+[node name="YouWin" type="Node2D"]
+script = ExtResource( 6 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.576471 )
+position = Vector2( 511.829, 299.708 )
+scale = Vector2( 1.02438, 0.599419 )
+texture = ExtResource( 1 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 494.75, 117.316 )
+texture = ExtResource( 2 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 157.015
+margin_top = 179.154
+margin_right = 357.015
+margin_bottom = 279.154
+texture_normal = ExtResource( 5 )
+texture_focused = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+margin_left = 657.631
+margin_top = 178.381
+margin_right = 857.631
+margin_bottom = 278.381
+texture_normal = ExtResource( 3 )
+texture_focused = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="TextureButton2" to="." method="_on_TextureButton2_pressed"]

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://FirstApp/Continue.png" type="Texture" id=1]
+[ext_resource path="res://FirstApp/whiteScreen.png" type="Texture" id=2]
+[ext_resource path="res://maps/storilinelevel3.png" type="Texture" id=3]
+[ext_resource path="res://storyline3.gd" type="Script" id=4]
+
+[node name="storylinelevel3" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 512.577, 298.549 )
+scale = Vector2( 1.04488, 0.62174 )
+texture = ExtResource( 2 )
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 512.577, 176.71 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 3 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 417.428
+margin_top = 315.72
+margin_right = 617.428
+margin_bottom = 415.72
+texture_normal = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

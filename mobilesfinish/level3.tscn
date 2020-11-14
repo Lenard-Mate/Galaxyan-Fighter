@@ -1,0 +1,260 @@
+[gd_scene load_steps=46 format=2]
+
+[ext_resource path="res://FirstApp/withoutfuel.png" type="Texture" id=1]
+[ext_resource path="res://KinematicBody2D.gd" type="Script" id=2]
+[ext_resource path="res://Joystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://FirstApp/SpaceNav.png" type="Texture" id=4]
+[ext_resource path="res://maps/preview-48682b4MwX3WUZW_0014.jpg" type="Texture" id=5]
+[ext_resource path="res://FirstApp/joystick.png" type="Texture" id=6]
+[ext_resource path="res://FirstApp/fier.png" type="Texture" id=7]
+[ext_resource path="res://pause.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sounds/music.wav" type="AudioStream" id=9]
+[ext_resource path="res://sounds/fireStart.wav" type="AudioStream" id=10]
+[ext_resource path="res://level3.gd" type="Script" id=11]
+[ext_resource path="res://FirstApp/pausebutton.png" type="Texture" id=12]
+[ext_resource path="res://FirstApp/pausebuttonblack.png" type="Texture" id=13]
+[ext_resource path="res://soundsettings.tscn" type="PackedScene" id=14]
+[ext_resource path="res://sounds/sound.png" type="Texture" id=15]
+[ext_resource path="res://GlobalVariable.tscn" type="PackedScene" id=16]
+[ext_resource path="res://FirstApp/Life.png" type="Texture" id=17]
+[ext_resource path="res://FirstApp/lifebardead.png" type="Texture" id=18]
+[ext_resource path="res://HeltBar.gd" type="Script" id=19]
+[ext_resource path="res://FirstApp/explosion/2.png" type="Texture" id=20]
+[ext_resource path="res://FirstApp/explosion/12.png" type="Texture" id=21]
+[ext_resource path="res://FirstApp/explosion/11.png" type="Texture" id=22]
+[ext_resource path="res://FirstApp/explosion/8.png" type="Texture" id=23]
+[ext_resource path="res://FirstApp/explosion/1.png" type="Texture" id=24]
+[ext_resource path="res://FirstApp/explosion/16.png" type="Texture" id=25]
+[ext_resource path="res://FirstApp/explosion/3.png" type="Texture" id=26]
+[ext_resource path="res://FirstApp/explosion/15.png" type="Texture" id=27]
+[ext_resource path="res://FirstApp/explosion/14.png" type="Texture" id=28]
+[ext_resource path="res://FirstApp/explosion/6.png" type="Texture" id=29]
+[ext_resource path="res://FirstApp/explosion/4.png" type="Texture" id=30]
+[ext_resource path="res://FirstApp/explosion/10.png" type="Texture" id=31]
+[ext_resource path="res://FirstApp/explosion/7.png" type="Texture" id=32]
+[ext_resource path="res://FirstApp/explosion/9.png" type="Texture" id=33]
+[ext_resource path="res://FirstApp/explosion/13.png" type="Texture" id=34]
+[ext_resource path="res://FirstApp/explosion/5.png" type="Texture" id=35]
+[ext_resource path="res://sounds/explosions.wav" type="AudioStream" id=36]
+[ext_resource path="res://fonts/OpenSans-ExtraBoldItalic.ttf" type="DynamicFontData" id=37]
+[ext_resource path="res://enemylifebar/EnemyLife.png" type="Texture" id=38]
+[ext_resource path="res://enemylifebar/EnemyLifebarblack.png" type="Texture" id=39]
+[ext_resource path="res://TextureProgress.gd" type="Script" id=40]
+[ext_resource path="res://finalBoss/FinalBoss.png" type="Texture" id=41]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 4 ) ],
+"loop": false,
+"name": "move",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 24 ), ExtResource( 20 ), ExtResource( 26 ), ExtResource( 30 ), ExtResource( 35 ), ExtResource( 29 ), ExtResource( 32 ), ExtResource( 23 ), ExtResource( 33 ), ExtResource( 31 ), ExtResource( 22 ), ExtResource( 21 ), ExtResource( 34 ), ExtResource( 28 ), ExtResource( 27 ), ExtResource( 25 ) ],
+"loop": true,
+"name": "died",
+"speed": 24.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "idel",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 35.6455, 18.9368 )
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 30.9736
+
+[sub_resource type="DynamicFont" id=4]
+size = 20
+outline_size = 1
+outline_color = Color( 0.945098, 0, 1, 1 )
+font_data = ExtResource( 37 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 11 )
+
+[node name="Galaxy" type="Sprite" parent="."]
+modulate = Color( 1, 1, 1, 0.717647 )
+show_behind_parent = true
+position = Vector2( 512.45, 301.299 )
+scale = Vector2( 0.810027, 0.853009 )
+texture = ExtResource( 5 )
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 71.1315
+margin_top = 472.489
+margin_right = 130.132
+margin_bottom = 529.489
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 7 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="player" type="KinematicBody2D" parent="."]
+show_behind_parent = true
+position = Vector2( 309.763, 179.82 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="player"]
+position = Vector2( 10, 10 )
+scale = Vector2( 2.71389, 2.03991 )
+frames = SubResource( 1 )
+animation = "idel"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player" groups=[
+"Sword",
+]]
+position = Vector2( 9.325, 10.12 )
+shape = SubResource( 2 )
+
+[node name="Position2D" type="Position2D" parent="player"]
+position = Vector2( 55, 11 )
+__meta__ = {
+"_edit_group_": true,
+"_gizmo_extents_": 29.4
+}
+
+[node name="Timer" type="Timer" parent="player"]
+wait_time = 0.1
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2( -310.043, -182.131 )
+limit_left = -1000
+limit_top = 0
+
+[node name="Fire" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 10 )
+bus = "Efects"
+
+[node name="DiedTimer" type="Timer" parent="player"]
+wait_time = 0.65
+one_shot = true
+
+[node name="PlayerDied" type="AudioStreamPlayer2D" parent="player"]
+stream = ExtResource( 36 )
+
+[node name="Area2D" type="Area2D" parent="player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D"]
+position = Vector2( 10, 10 )
+shape = SubResource( 3 )
+
+[node name="Joystick" parent="." instance=ExtResource( 3 )]
+position = Vector2( 900, 491.179 )
+
+[node name="backmusic" type="AudioStreamPlayer2D" parent="."]
+position = Vector2( 579.32, 282.986 )
+stream = ExtResource( 9 )
+volume_db = -15.0
+autoplay = true
+bus = "Music"
+
+[node name="Timerenemy" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause" parent="CanvasLayer" instance=ExtResource( 8 )]
+visible = false
+position = Vector2( 17.6389, 10.0793 )
+
+[node name="pausebutton" type="TextureButton" parent="."]
+margin_left = 937.895
+margin_top = 9.58775
+margin_right = 988.895
+margin_bottom = 59.5877
+texture_normal = ExtResource( 12 )
+texture_focused = ExtResource( 13 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="sound" parent="." instance=ExtResource( 14 )]
+visible = false
+
+[node name="soundbutton" type="TextureButton" parent="."]
+margin_left = 874.143
+margin_top = 11.2246
+margin_right = 924.143
+margin_bottom = 61.2246
+texture_normal = ExtResource( 15 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GlobalVariable" parent="." instance=ExtResource( 16 )]
+visible = false
+position = Vector2( 131.546, -2.94521 )
+
+[node name="HeltBar" type="TextureProgress" parent="."]
+anchor_right = 0.742
+margin_left = 15.0651
+margin_top = 6.73394
+margin_right = 115.065
+margin_bottom = 52.7339
+rect_scale = Vector2( 1.5, 1.5 )
+max_value = 25.0
+value = 25.0
+texture_under = ExtResource( 18 )
+texture_progress = ExtResource( 17 )
+script = ExtResource( 19 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0 )
+margin_top = -2.0
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_left = 160.214
+margin_top = 7.80633
+margin_right = 218.214
+margin_bottom = 35.8063
+custom_fonts/font = SubResource( 4 )
+text = "Destroy the enemy!"
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_left = 556.549
+margin_top = 15.4597
+margin_right = 684.549
+margin_bottom = 55.4597
+grow_horizontal = 2
+max_value = 100.0
+step = 1.0
+page = 1.0
+value = 60.0
+texture_under = ExtResource( 38 )
+texture_progress = ExtResource( 39 )
+script = ExtResource( 40 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 737.903, 29.1356 )
+scale = Vector2( 0.73057, 0.749152 )
+texture = ExtResource( 41 )
+[connection signal="button_down" from="TextureButton" to="player" method="_on_TextureButton_button_down"]
+[connection signal="button_up" from="TextureButton" to="player" method="_on_TextureButton_button_up"]
+[connection signal="timeout" from="player/Timer" to="player" method="_on_Timer_timeout"]
+[connection signal="timeout" from="player/DiedTimer" to="player" method="_on_DiedTimer_timeout"]
+[connection signal="body_entered" from="player/Area2D" to="player" method="_on_Area2D_body_entered"]
+[connection signal="timeout" from="Timerenemy" to="." method="_on_Timerenemy_timeout"]
+[connection signal="pressed" from="pausebutton" to="CanvasLayer/Pause" method="_on_pausebutton_pressed"]
+[connection signal="pressed" from="soundbutton" to="sound" method="_on_soundbutton_pressed"]
